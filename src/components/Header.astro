@@ -1,0 +1,35 @@
+---
+interface Props {
+  activeLink?: 'home' | 'about' | 'projects' | 'none';
+}
+
+const { activeLink = 'none' } = Astro.props;
+---
+
+<header class="bg-white shadow-md">
+  <nav class="container mx-auto px-6 py-3">
+    <div class="flex justify-between items-center">
+      <div class="text-xl font-semibold text-gray-700">MyLogo/Name</div>
+      <div>
+        <a 
+          href="/" 
+          class={`px-3 py-2 ${activeLink === 'home' ? 'text-blue-500' : 'text-gray-600 hover:text-blue-500'}`}
+        >
+          Home
+        </a>
+        <a 
+          href="/aboutme" 
+          class={`px-3 py-2 ${activeLink === 'about' ? 'text-blue-500' : 'text-gray-600 hover:text-blue-500'}`}
+        >
+          About
+        </a>
+        <a 
+          href="/projects" 
+          class={`px-3 py-2 ${activeLink === 'projects' ? 'text-blue-500' : 'text-gray-600 hover:text-blue-500'}`}
+        >
+          Projects
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>

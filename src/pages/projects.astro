@@ -1,0 +1,109 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+// Project data based on the GitHub repositories
+const projects = [
+  {
+    title: "Portfolio Website",
+    description: "Personal portfolio website built with HTML, CSS and JavaScript, showcasing my projects and skills.",
+    imageUrl: "https://raw.githubusercontent.com/RadjaShiqnals/radjashiqnals.github.io/main/img/profile.jpg",
+    category: "Web Dev",
+    categoryColor: "blue",
+    tags: ["HTML", "CSS", "JavaScript"],
+    detailsUrl: "/projects/portfolio",
+    githubUrl: "https://github.com/RadjaShiqnals/radjashiqnals.github.io"
+  },
+  {
+    title: "WhatsApp Bot",
+    description: "A WhatsApp bot built with Node.js that can perform various automated tasks and respond to user commands.",
+    imageUrl: "https://repository-images.githubusercontent.com/627566513/1a5e4c2d-8778-48e7-bf2c-d2be97db0300",
+    category: "Bot",
+    categoryColor: "green",
+    tags: ["Node.js", "JavaScript", "API"],
+    detailsUrl: "/projects/whatsapp-bot",
+    githubUrl: "https://github.com/RadjaShiqnals/whatsapp-bot-radjashiqnals"
+  },
+  {
+    title: "Astro Portfolio",
+    description: "Modern portfolio website built with Astro and TailwindCSS, featuring fast performance and responsive design.",
+    imageUrl: "https://placehold.co/600x400/E2E8F0/AAAAAA?text=Astro+Portfolio",
+    category: "Web Dev",
+    categoryColor: "purple",
+    tags: ["Astro", "TailwindCSS", "JavaScript"],
+    detailsUrl: "/projects/astro-portfolio",
+    githubUrl: "#"
+  }
+];
+---
+
+<Layout title="Projects - My Portfolio">
+  <Header activeLink="projects" />
+
+  {/* MAIN CONTENT AREA */}
+  <main class="flex-grow container mx-auto px-6 py-8">
+    <section class="py-8">
+      <h1 class="text-3xl font-bold text-center mb-12">My Projects</h1>
+      
+      {/* Project Filters */}
+      <div class="flex justify-center mb-8">
+        <div class="inline-flex rounded-md shadow-sm" role="group">
+          <button type="button" class="px-4 py-2 bg-blue-500 text-white font-medium text-sm rounded-l-lg">All</button>
+          <button type="button" class="px-4 py-2 bg-gray-200 text-gray-700 hover:bg-gray-300 font-medium text-sm">Web Dev</button>
+          <button type="button" class="px-4 py-2 bg-gray-200 text-gray-700 hover:bg-gray-300 font-medium text-sm">Bot</button>
+          <button type="button" class="px-4 py-2 bg-gray-200 text-gray-700 hover:bg-gray-300 font-medium text-sm rounded-r-lg">Design</button>
+        </div>
+      </div>
+      
+      {/* Projects Grid - Using the ProjectCard component */}
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {projects.map(project => (
+          <ProjectCard 
+            title={project.title}
+            description={project.description}
+            imageUrl={project.imageUrl}
+            category={project.category}
+            categoryColor={project.categoryColor}
+            tags={project.tags}
+            detailsUrl={project.detailsUrl}
+            githubUrl={project.githubUrl}
+          />
+        ))}
+      </div>
+      
+      {/* GitHub Profile Section */}
+      <div class="mt-16 bg-white p-8 rounded-lg shadow-md text-center">
+        <h2 class="text-2xl font-semibold mb-4">More Projects on GitHub</h2>
+        <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+          Check out my GitHub profile for more projects and contributions.
+        </p>
+        <a 
+          href="https://github.com/RadjaShiqnals" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="inline-flex items-center bg-gray-800 hover:bg-gray-900 text-white font-semibold py-3 px-6 rounded-lg transition duration-300"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+          View GitHub Profile
+        </a>
+      </div>
+      
+      {/* Contact CTA */}
+      <div class="mt-16 bg-blue-50 p-8 rounded-lg text-center">
+        <h2 class="text-2xl font-semibold mb-4">Interested in working together?</h2>
+        <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+          I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.
+        </p>
+        <a href="mailto:your.email@example.com" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition duration-300">
+          Get In Touch
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
